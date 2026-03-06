@@ -8,6 +8,7 @@
     
     <input type="number" id="hp-input" placeholder="New HP">
     <button onclick="updateHP()">Update HP</button>
+    <img id="char-pic"> Character's picture </img>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -15,21 +16,20 @@
 
         // PASTE YOUR CONFIG HERE
         const firebaseConfig = {
-            apiKey: "AIzaSyAuXd9f6syxohcRQwXvFYcyuJCIyv_enTI",
-            authDomain: "charactersheetmanager-ee5e8.firebaseapp.com",
-            projectId: "charactersheetmanager-ee5e8",
-            storageBucket: "charactersheetmanager-ee5e8.firebasestorage.app",
-            messagingSenderId: "1095802341255",
-            appId: "1:1095802341255:web:8e3dd6ce82c82d185d7522"
-            };
+            apiKey: "AIzaSyBrSgmyLYjZ-TD5ecWzLh0SlL0kuKrTHg0",
+            authDomain: "ttrpg-manager-792b7.firebaseapp.com",
+            projectId: "ttrpg-manager-792b7",
+            storageBucket: "ttrpg-manager-792b7.firebasestorage.app",
+            messagingSenderId: "180951912564",
+            appId: "1:180951912564:web:f99d7273b05fbca111c121"
+        };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
         // Reference to a specific character document
-        // (Firestore: Collection "players", Document "hero1")
-        const charRef = doc(db, "Players", "Hero1");
+        const charRef = doc(db, "Characters", "Richard Magnusson");
 
         // 1. REAL-TIME LISTENER (The "Magic" part)
         onSnapshot(charRef, (snapshot) => {
@@ -37,6 +37,7 @@
                 const data = snapshot.data();
                 document.getElementById('char-name').innerText = data.Name;
                 document.getElementById('hp-display').innerText = data.HP;
+                document.getElementById('char-pic').src = data.ImageRef;
             } else {
                 console.log("No such character! Create 'players/hero1' in console.");
             }
