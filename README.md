@@ -8,7 +8,7 @@
     
     <input type="number" id="hp-input" placeholder="New HP">
     <button onclick="updateHP()">Update HP</button>
-    <img id="char-pic"> Character's picture </img>
+    <img id="char-pic">
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
