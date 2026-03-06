@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>TTRPG Real-Time Sheet</title>
